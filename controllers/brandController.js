@@ -1,15 +1,27 @@
- const createBrand = (req,res)=>{
+ const Brand = require('../models/brandModel')
+ 
+ const createBrand =async(req,res)=>{
 try {
-    res.status(200).send({message:'success'})
+
+    const newBrand = Brand.create(req.body)
+    //newBrand.save();
+    res.status(200).send({message:'Brand created successfully',success:true})
 } catch (error) {
     res.status(500).send({error:error})
 }
 }
+//http://localhost:7000/api/brand/create
 
- const getAllBrands =(req,res)=>{
+
+
+//{
+   // "name":"Puna"
+//}
+
+ const getAllBrands =async(req,res)=>{
     try {
-
-    res.status(200).send({message:'success'})
+        const brands = await Brand.findAll()
+    res.status(200).send({brands:brands,success:true})
         
     } catch (error) {
     res.status(500).send({error:error})

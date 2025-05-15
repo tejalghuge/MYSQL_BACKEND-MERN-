@@ -17,7 +17,7 @@ const sequelize = new Sequelize(
 const connectDB = async() => {
     try {
         await sequelize.authenticate();
-        console.log("Databse connected Successfully")
+        console.log("Database connected Successfully")
 
     // Automatically alter the tables to match model definitions (you can adjust this based on your need)
 
