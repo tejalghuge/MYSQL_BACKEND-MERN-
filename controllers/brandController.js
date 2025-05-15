@@ -1,24 +1,24 @@
- const Brand = require('../models/brandModel')
- 
- const createBrand =async(req,res)=>{
-try {
+const Brand = require('../models/brandModel') 
 
-    const newBrand = Brand.create(req.body)
-    //newBrand.save();
+
+const createBrand = async(req,res)=>{
+    console.log(req.body)
+    const {name} = req.body
+try {
+    const newBrand = await Brand.create({name})
     res.status(200).send({message:'Brand created successfully',success:true})
 } catch (error) {
     res.status(500).send({error:error})
 }
 }
-//http://localhost:7000/api/brand/create
+// http://localhost:7000/api/brand/create
+
+// {
+//     "name":"Puma"
+// }
 
 
-
-//{
-   // "name":"Puna"
-//}
-
- const getAllBrands =async(req,res)=>{
+ const getAllBrands = async(req,res)=>{
     try {
         const brands = await Brand.findAll()
     res.status(200).send({brands:brands,success:true})
@@ -61,5 +61,6 @@ try {
 }
 
 module.exports = {
-    createBrand, getAllBrands, getBrandByID, updateBrand, deleteBrand
+    createBrand, getAllBrands, 
+    // getBrandByID, updateBrand, deleteBrand
 }

@@ -1,57 +1,58 @@
-const Category = require('../models/categoryModel');
+createCategory  =async(req,res)=>{
 
-const createCategory = async (req, res) => {
-    try {
-        const newCategory = await Category.create(req.body);
-        res.status(200).send({ message: 'Category created successfully', success: true });
+   console.log(req.body)
+       const {name} = req.body
+   try {
+       const newBrand = await Brand.create(name)
+       res.status(200).send({message:'Brand created successfully',success:true})
     } catch (error) {
-        res.status(500).send({ error: error.message });
+    res.status(500).send({error:error})
+        
     }
-};
-
-const getAllCategories = async (req, res) => {
+}
+getAllCategories =(req,res)=>{
     try {
-        const categories = await Category.findAll();
-        res.status(200).send({ categories, success: true });
+    res.status(200).send({message:'success'})
+        
     } catch (error) {
-        res.status(500).send({ error: error.message });
+    res.status(500).send({error:error})
+        
     }
-};
-
-const getCategoryByID = async (req, res) => {
+}
+getCategoryByID =(req,res)=>{
     try {
-        const category = await Category.findByPk(req.params.id);
-        if (!category) return res.status(404).send({ message: 'Category not found' });
-        res.status(200).send({ category, success: true });
+    res.status(200).send({message:'success'})
+        
     } catch (error) {
-        res.status(500).send({ error: error.message });
+    res.status(500).send({error:error})
+        
     }
-};
-
-const updateCategory = async (req, res) => {
+}
+updateCategory =(req,res)=>{
     try {
-        const category = await Category.update(req.body, {
-            where: { id: req.params.id }
-        });
-        res.status(200).send({ message: 'Category updated successfully', success: true });
+    res.status(200).send({message:'success'})
+        
     } catch (error) {
-        res.status(500).send({ error: error.message });
+    res.status(500).send({error:error})
+        
     }
-};
-
-const deleteCategory = async (req, res) => {
+}
+deleteCategory =(req,res)=>{
     try {
-        await Category.destroy({ where: { id: req.params.id } });
-        res.status(200).send({ message: 'Category deleted successfully', success: true });
+    res.status(200).send({message:'success'})
+        
     } catch (error) {
-        res.status(500).send({ error: error.message });
+    res.status(500).send({error:error})
+        
     }
-};
+}
 
-module.exports = {
-    createCategory,
-    getAllCategories,
-    getCategoryByID,
-    updateCategory,
-    deleteCategory
-};
+
+
+
+module.exports = {createCategory,
+getAllCategories,
+getCategoryByID,
+updateCategory,
+deleteCategory
+}

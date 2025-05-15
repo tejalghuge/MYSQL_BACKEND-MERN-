@@ -1,50 +1,53 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db');
+const {DataTypes} =require('sequelize')
+const sequelize = require('../config/db')
 
 const Product = sequelize.define('Product', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
+    id:{
+        type:DataTypes.INTEGER,
+        primaryKey:true,
+        autoIncrement:true
     },
-
-    name: {
-        type: DataTypes.STRING(200),
-        allowNull: false
+    name:{
+        type:DataTypes.STRING(100),
+        allowNull:false,
     },
-
-    description: {
-        type: DataTypes.STRING
+    description:{
+        type:DataTypes.STRING(),
     },
-
-    price: {
-        type: DataTypes.FLOAT,
-        allowNull: false
+    price:{
+        type:DataTypes.INTEGER,
+        allowNull:false,
     },
-
-    category: {
-        type: DataTypes.STRING,
-        allowNull: false
+    category_id:{
+        type:DataTypes.INTEGER,
+        allowNull:false
     },
-
-    brand: {
-        type: DataTypes.STRING,
-        allowNull: false
+    brand_id:{
+        type:DataTypes.INTEGER,
+        allowNull:false
     },
-
-    quantity: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+    Quantity:{
+        type:DataTypes.INTEGER,
+        allowNull:false
     },
-
-    inStock: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true
+    InStock:{
+        type:DataTypes.BOOLEAN,
+        defaultValue:true
+    },
+    createdAt:{
+        type:DataTypes.DATE,
+        defaultValue:Date.now()
+    },
+    upadatedAt:{
+        type:DataTypes.DATE,
+        defaultValue:Date.now()
     }
+},{
+    tableName:'Products',
+    timestamps:true
+})
 
-}, {
-    tableName: 'products',
-    timestamps: true
-});
 
-module.exports = Product;
+
+
+module.exports = Product 
