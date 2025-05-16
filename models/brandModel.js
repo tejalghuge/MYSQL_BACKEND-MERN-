@@ -15,7 +15,7 @@ const Brand = sequelize.define('Brand',{
     }
 },{
     tableName:'Brands',
-    timestamps:true        //at created updated table it is true, otherwise false
+    timestamps:false       //at created updated table it is true, otherwise false
 })
 
 
